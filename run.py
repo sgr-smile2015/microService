@@ -3,8 +3,8 @@
 # CreateTime: 2019-06-27 15:01:11
 
 from flask_script import Manager
-from app import api,db
-
+from app import create_app, db 
+api = create_app()
 manager = Manager(api)
 
 
