@@ -82,6 +82,7 @@ celerybeat-schedule
 *.sage.py
 
 # Environments
+.python-version
 .env
 .venv
 env/
@@ -99,6 +100,3 @@ venv.bak/
 
 # mkdocs documentation
 /site
-
-# mypy
-.mypy_cache/
