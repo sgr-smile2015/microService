@@ -1,6 +1,16 @@
 version: '2.1'
 
 services:
+  users-db:
+    container_name: users-db
+    build: ./app/db
+    ports:
+      - 3308:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=admin123
+    healthcheck:
+      test: exit 0
+
   users-service:
     container_name: users-service
     build: .
@@ -10,3 +20,7 @@ services:
       - 5000:5000  
     environment: 
       - APP_SETTING=config.DevConfig
+      - DATABASE_URL=mysql+pymysql://root:admin123@users-db:3306/users_dev
+    depends_on:
+      users-db:
+        condition: service_healthy

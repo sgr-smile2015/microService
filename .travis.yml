@@ -13,10 +13,10 @@ before_install:
   - sudo mv docker-compose /usr/local/bin/docker-compose
 
 before_script:
-  - docker-compose -f docker-compose.yml build
+  - docker-compose -f docker-compose.yml up -d --build
 
 script:
-  - docker-compose -f docker-compose.yml ps
+  - docker-compose -f docker-compose-prod.yml run users-service python run.py recreate_db
   
 after_script:
   - docker-compose -f docker-compose.yml down
