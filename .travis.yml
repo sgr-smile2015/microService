@@ -15,5 +15,8 @@ before_install:
 before_script:
   - docker-compose -f docker-compose.yml build
 
+script:
+  - docker-compose -f docker-compose.yml ps
+  
 after_script:
   - docker-compose -f docker-compose.yml down
