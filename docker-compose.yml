@@ -1,0 +1,10 @@
+version: '2.1'
+
+services:
+  users-service:
+    container_name: users-service
+    build: .
+    volumes:
+      - '.:/app'
+    ports:
+      - 5000:5000  
