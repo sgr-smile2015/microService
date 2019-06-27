@@ -100,3 +100,6 @@ venv.bak/
 
 # mkdocs documentation
 /site
+
+# vscode edit
+.vscode
