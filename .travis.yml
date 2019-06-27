@@ -16,7 +16,7 @@ before_script:
   - docker-compose -f docker-compose.yml up -d --build
 
 script:
-  - docker-compose -f docker-compose-prod.yml run users-service python run.py recreate_db
+  - docker-compose -f docker-compose.yml run users-service python run.py recreate_db
   
 after_script:
   - docker-compose -f docker-compose.yml down
