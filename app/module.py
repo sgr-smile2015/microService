@@ -2,7 +2,9 @@
 # CreateTime: 2019-06-27 20:03:02
 import os
 import datetime
-from app import db
+# from flask_sqlalchemy import SQLAlchemy
+
+# db = SQLAlchemy()
 
 
 class User(db.Model):

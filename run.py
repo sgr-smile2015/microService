@@ -5,8 +5,8 @@
 from flask_script import Manager
 from app import create_app, db
 import unittest
-# api = create_app()
-manager = Manager(create_app())
+api = create_app()
+manager = Manager(api)
 
 
 @manager.command
