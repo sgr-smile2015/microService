@@ -8,6 +8,7 @@ class BaseConfig(object):
     DEBUG = False
     TESTING = False
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SECRET_KEY = 'CazzEqyQDBjm'
 
 
 class DevConfig(BaseConfig):
