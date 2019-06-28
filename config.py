@@ -3,6 +3,8 @@
 # CreateTime: 2019-06-27 15:32:00
 import os
 
+#APP_ENV = os.environ.get('APP_ENV')
+APP_ENV = 'dev'
 
 class BaseConfig(object):
     DEBUG = False
@@ -13,10 +15,23 @@ class BaseConfig(object):
 
 class DevConfig(BaseConfig):
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
+    SERVER_NAME = 'dev_server'
+    SQLALCHEMY_ECHO = True
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:123456@192.168.7.25:3307/users_dev'
 
 
-class ProConfig(BaseConfig):
+class TestConfig(BaseConfig):
+    DEBUG = True
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:admin123@users-db:3306/users_test'
+
+
+class ProdConfig(BaseConfig):
     TESTING = True
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:admin123@users-db:3306/users_prod'
 
+
+configs = {
+    'dev': DevConfig,
+    'test': TestConfig,
+    'prod': ProdConfig
+}

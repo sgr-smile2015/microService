@@ -4,14 +4,17 @@
 import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from config import configs, APP_ENV
 
 db = SQLAlchemy()
 
 
 def create_app():
   api = Flask(__name__)
-  api_settings = os.getenv('APP_SETTING')
+  api_settings = configs[APP_ENV]
   api.config.from_object(api_settings)
+  import sys
+  print("[----]", api.config, sys.stderr)
 
   db.init_app(api)
   from .views import users_blueprint

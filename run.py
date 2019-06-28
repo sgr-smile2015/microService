@@ -3,10 +3,10 @@
 # CreateTime: 2019-06-27 15:01:11
 
 from flask_script import Manager
-from app import create_app, db 
+from app import create_app, db
 import unittest
-api = create_app()
-manager = Manager(api)
+# api = create_app()
+manager = Manager(create_app())
 
 
 @manager.command
@@ -14,6 +14,7 @@ def recreate_db():
     db.drop_all()
     db.create_all()
     db.session.commit()
+    print("db init successful..")
 
 @manager.command
 def test():

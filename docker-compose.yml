@@ -19,8 +19,9 @@ services:
     ports:
       - 5000:5000  
     environment: 
-      - APP_SETTING=config.DevConfig
-      - DATABASE_URL=mysql+pymysql://root:admin123@users-db:3306/users_dev
+      # - APP_SETTING=config.DevConfig
+      - APP_ENV=test
+      # - DATABASE_URL=mysql+pymysql://root:admin123@users-db:3306/users_dev
     depends_on:
       users-db:
         condition: service_healthy
