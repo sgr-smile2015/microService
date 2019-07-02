@@ -12,7 +12,7 @@ def create_app():
   api_settings = configs[APP_ENV]
   api.config.from_object(api_settings)
   import sys
-  print("[----]", api.config, sys.stderr)
+  # print("[----]", api.config, sys.stderr)
 
   db.init_app(api)
   from .views import users_blueprint

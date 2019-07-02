@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # CreateTime: 2019-06-27 20:03:02
 import os
-import datetime
+from datetime import datetime
 from sqlalchemy import Column, Integer, String, DateTime, Boolean
 from flask_sqlalchemy import SQLAlchemy
 
@@ -19,4 +19,4 @@ class User(db.Model):
     def __init__(self, username, email):
         self.username = username
         self.email = email
-        self.created_at = datetime.datetime.utcnow
+        self.created_at = datetime.now()
