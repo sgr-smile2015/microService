@@ -3,13 +3,15 @@
 
 from flask_testing import TestCase
 from app import create_app, db, configs
+import os
 
+APP_ENV = os.environ.get('APP_ENV')
 
 class BaseTestCase(TestCase):
     
     def create_app(self):
         api = create_app()
-        api.config.from_object(configs['dev'])
+        api.config.from_object(configs[APP_ENV])
         return api
 
 

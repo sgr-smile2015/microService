@@ -3,8 +3,8 @@
 # CreateTime: 2019-06-27 15:32:00
 import os
 
-# APP_ENV = os.environ.get('APP_ENV')
-APP_ENV = 'dev'
+APP_ENV = os.environ.get('APP_ENV')
+#APP_ENV = 'dev'
 
 class BaseConfig(object):
     DEBUG = False
