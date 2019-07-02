@@ -17,7 +17,7 @@ services:
     volumes:
       - '.:/app'
     ports:
-      - 5000:5000  
+      - 5000:5000
     environment: 
       # - APP_SETTING=config.DevConfig
       - APP_ENV=test
@@ -25,3 +25,5 @@ services:
     depends_on:
       users-db:
         condition: service_healthy
+    command: |
+      gunicorn -w 2 -b 0.0.0.0:5000 run:api

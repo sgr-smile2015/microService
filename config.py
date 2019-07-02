@@ -3,8 +3,8 @@
 # CreateTime: 2019-06-27 15:32:00
 import os
 
-#APP_ENV = os.environ.get('APP_ENV')
-APP_ENV = 'dev'
+APP_ENV = os.environ.get('APP_ENV')
+#APP_ENV = 'dev'
 
 class BaseConfig(object):
     DEBUG = False
@@ -15,7 +15,6 @@ class BaseConfig(object):
 
 class DevConfig(BaseConfig):
     DEBUG = True
-    SERVER_NAME = 'dev_server'
     SQLALCHEMY_ECHO = True
     SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:123456@192.168.7.25:3307/users_dev'
 

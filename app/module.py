@@ -2,18 +2,19 @@
 # CreateTime: 2019-06-27 20:03:02
 import os
 import datetime
-# from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import Column, Integer, String, DateTime, Boolean
+from flask_sqlalchemy import SQLAlchemy
 
-# db = SQLAlchemy()
+db = SQLAlchemy()
 
 
 class User(db.Model):
     __tablename__ = 'users'
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    username = db.Column(db.String(128), nullable=False)
-    email = db.Column(db.String(128), nullable=False)
-    active = db.Column(db.Boolean(), default=False, nullable=False)
-    created_at = db.Column(db.DateTime, nullable=False)
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    username = Column(String(128), nullable=False)
+    email = Column(String(128), nullable=False)
+    active = Column(Boolean(), default=False, nullable=False)
+    created_at = Column(DateTime, nullable=False)
 
     def __init__(self, username, email):
         self.username = username

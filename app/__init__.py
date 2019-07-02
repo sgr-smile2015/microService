@@ -3,10 +3,8 @@
 
 import os
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
+from app.module import db
 from config import configs, APP_ENV
-
-db = SQLAlchemy()
 
 
 def create_app():
