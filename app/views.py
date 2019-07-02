@@ -51,3 +51,55 @@ def add_user():
             'message': 'Invalid payload'
         }
         return jsonify(response_data), 400
+
+
+@users_blueprint.route('/users/<user_id>', methods=['GET'])
+def get_user(user_id):
+    response_data = {
+        'status': 'fail',
+        'message': 'User not exists'
+    }
+    code = 404
+    try:
+        user = User.query.filter_by(id=int(user_id)).first()
+        if user:
+            response_data = {
+                'status': 'success',
+                'data': {
+                    'username': user.username,
+                    'email': user.email,
+                    'created_at': user.created_at
+                }
+            }
+            code = 200
+    except ValueError:
+        response_data = {
+            'status': 'fail',
+            'message': 'Param id error'
+        }
+        code = 400
+    finally:
+        return jsonify(response_data), code
+
+@users_blueprint.route('/users', methods=['get'])
+def get_all_users():
+    users = User.query.all()
+    users_list = []
+    for user in users:
+        user_obj = {
+            'id': user.id,
+            'username': user.username,
+            'email': user.email,
+            'created_at': user.created_at
+        }
+        users_list.append(user_obj)
+    
+    response_data = {
+        'status': 'success',
+        'data': {
+            'users': users_list
+        }
+    }
+    code = 200
+
+    return jsonify(response_data), code

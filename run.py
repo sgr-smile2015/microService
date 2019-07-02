@@ -21,7 +21,9 @@ def recreate_db():
 @manager.command
 def seed_user():
     db.session.add(User(username='jims', email='jims@alibaba.com'))
+    db.session.add(User(username='mark', email='mark@gmail.com'))
     db.session.commit()
+    print('seed user successful..')
 
 
 @manager.command
